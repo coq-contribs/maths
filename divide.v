@@ -177,7 +177,7 @@ left; rewrite H0; rewrite e; ring.
 assert (Hqq0 : q0 * q = 1).
 apply Zmult_reg_l with a.
 assumption.
-ring.
+ring_simplify.
 pattern a at 2 in |- *; rewrite H2; ring.
 assert (q | 1).
 rewrite <- Hqq0; auto.
