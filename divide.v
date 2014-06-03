@@ -19,6 +19,8 @@ Require Import ZArith.
 Require Import ZArithRing.
 Require Import Zcomplements.
 
+Unset Standard Proposition Elimination Names.
+
 (** Divisibility *)
 
 Inductive divide (a b : Z) : Prop :=
