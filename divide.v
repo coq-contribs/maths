@@ -28,7 +28,7 @@ Inductive divide (a b : Z) : Prop :=
 
 Notation "( x | y )" := (divide x y) (at level 0) : Z_scope.
 
-Open Local Scope Z_scope.
+Local Open Scope Z_scope.
 
 
 (** Results *)
