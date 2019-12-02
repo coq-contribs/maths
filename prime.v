@@ -93,9 +93,9 @@ assert
  (a = (- p)%Z \/
   (- p < a < -1)%Z \/
   a = (-1)%Z \/ a = 0%Z \/ a = 1%Z \/ (1 < a < p)%Z \/ a = p).
-assert (Zabs a <= Zabs p)%Z. apply divide_bounds; [ assumption | omega ].
+assert (Z.abs a <= Z.abs p)%Z. apply divide_bounds; [ assumption | omega ].
 generalize H3. 
-pattern (Zabs a) in |- *; apply Zabs_ind; pattern (Zabs p) in |- *;
+pattern (Z.abs a) in |- *; apply Zabs_ind; pattern (Z.abs p) in |- *;
  apply Zabs_ind; intros; omega.
 intuition.
 (* -p < a < -1 *)

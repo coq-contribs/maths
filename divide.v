@@ -193,17 +193,17 @@ Qed.
 
 Lemma Zabs_ind :
  forall (P : Z -> Prop) (x : Z),
- (x >= 0 -> P x) -> (x <= 0 -> P (- x)) -> P (Zabs x).
+ (x >= 0 -> P x) -> (x <= 0 -> P (- x)) -> P (Z.abs x).
 Proof.
 intros; elim (Z_lt_ge_dec x 0); intro. 
 rewrite Zabs_non_eq. apply H0; omega. omega.
-rewrite Zabs_eq. apply H; assumption. omega.
+rewrite Z.abs_eq. apply H; assumption. omega.
 Qed.
 
-Lemma divide_bounds : forall a b : Z, (a | b) -> b <> 0 -> Zabs a <= Zabs b.
+Lemma divide_bounds : forall a b : Z, (a | b) -> b <> 0 -> Z.abs a <= Z.abs b.
 Proof.
 simple induction 1; intros.
-pattern (Zabs a) in |- *; apply Zabs_ind; pattern (Zabs b) in |- *;
+pattern (Z.abs a) in |- *; apply Zabs_ind; pattern (Z.abs b) in |- *;
  apply Zabs_ind; intros.
 (* a >= 0, b >= 0 *)
 elim (z_case_0 q); intro.
@@ -213,14 +213,14 @@ apply Zmult_ge_compat; omega.
 rewrite H0; ring. omega.
 elim H4; intro; clear H4. 
 rewrite H5 in H0; omega.
-apply Zge_le.
+apply Z.ge_le.
 replace a with (1 * a).
 rewrite H0.
 apply Zmult_ge_compat; omega.
 ring.
 (* a >= 0, b <= 0 *)
 elim (z_case_0 q); intro.
-apply Zge_le.
+apply Z.ge_le.
 replace a with (1 * a).
 rewrite H0.
 replace (- (q * a)) with (- q * a).
@@ -234,7 +234,7 @@ apply Zmult_ge_compat; omega.
 omega.
 (* a <= 0, b >= 0 *)
 elim (z_case_0 q); intro.
-apply Zge_le.
+apply Z.ge_le.
 replace (- a) with (1 * - a).
 rewrite H0.
 replace (q * a) with (- q * - a).
@@ -256,7 +256,7 @@ apply Zmult_ge_compat; omega.
 ring. omega.
 elim H4; intro; clear H4. 
 rewrite H5 in H0; omega.
-apply Zge_le.
+apply Z.ge_le.
 replace (- a) with (1 * - a).
 rewrite H0.
 replace (- (q * a)) with (q * - a).
